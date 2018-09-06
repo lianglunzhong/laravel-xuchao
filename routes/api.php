@@ -35,5 +35,21 @@ $api->version('v1', [
     	// 商品列表
     	$api->get('products', 'ProductsController@index')
     		->name('api.products.index');
+        // 商品详情
+        $api->get('products/{product}', 'ProductsController@show')
+            ->name('api.products.show');
+
+        /** 需要 token 验证的接口 */
+        $api->group(['middleware' => 'api.auth'], function($api) {
+            // 购物车列表
+            $api->get('cart', 'CartController@index')
+                ->name('api.cart.index');
+            // 添加购物车
+            $api->post('cart', 'CartController@store')
+                ->name('api.cart.store');
+            // 删除购物车
+            $api->delete('cart/{product}', 'CartController@destroy')
+                ->name('api.cart.destroy');
+        });
     });
 });

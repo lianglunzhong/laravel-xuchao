@@ -17,4 +17,15 @@ class ProductsController extends Controller
 
     	return $this->response->paginator($products, new ProductTransformer());
     }
+
+    public function show(Product $product)
+    {
+        if (!$product->on_sale) {
+            return $this->response->errorBadRequest();
+        }
+
+        $product->increment('review_count', 1);
+        
+        return $this->response->item($product, new ProductTransformer);
+    }
 }
