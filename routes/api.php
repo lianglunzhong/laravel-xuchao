@@ -50,6 +50,15 @@ $api->version('v1', [
             // 删除购物车
             $api->delete('cart/{product}', 'CartController@destroy')
                 ->name('api.cart.destroy');
+            // 收货地址
+            $api->get('addresses', 'UserAddressesController@index')
+                ->name('api.addresses.index');
+            // 新增地址
+            $api->post('addresses', 'UserAddressesController@store')
+                ->name('api.addresses.store');
+            // 删除地址
+            $api->delete('addresses/{address}', 'UserAddressesController@destroy')
+                ->name('api.addresses.destroy');
         });
     });
 });
