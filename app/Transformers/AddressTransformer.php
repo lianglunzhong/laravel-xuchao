@@ -20,7 +20,7 @@ class AddressTransformer extends TransformerAbstract
             'full_address' => $address->full_address,
             'contact_name' => $address->contact_name,
             'contact_phone' => $address->contact_phone,
-            'last_used_at' => $address->last_used_at,
+            'last_used_at' => $address->last_used_at->toDateTimeString(),
         ];
     }
 }

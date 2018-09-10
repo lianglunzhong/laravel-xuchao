@@ -59,6 +59,15 @@ $api->version('v1', [
             // 删除地址
             $api->delete('addresses/{address}', 'UserAddressesController@destroy')
                 ->name('api.addresses.destroy');
+            // 保存订单
+            $api->post('orders', 'OrdersController@store')
+                ->name('api.orders.store');
+            // 订单列表
+            $api->get('orders', 'OrdersController@index')
+                ->name('api.orders.index');
+            // 订单详情
+            $api->get('orders/{order}', 'OrdersController@show')
+                ->name('api.orders.show');
         });
     });
 });
