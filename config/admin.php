@@ -75,7 +75,7 @@ return [
     | Html title for all pages.
     |
     */
-    'title' => 'Admin',
+    'title' => 'XuChao Shop 管理后台',
 
     /*
     |--------------------------------------------------------------------------

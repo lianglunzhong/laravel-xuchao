@@ -13,4 +13,6 @@ Route::group([
     $router->get('/', 'HomeController@index');
     // 产品
     $router->resource('/products', 'ProductsController', ['except' => ['destroy']]);
+    // 订单
+    $router->resource('/orders', 'OrdersController', ['only' => ['index', 'show']]);
 });

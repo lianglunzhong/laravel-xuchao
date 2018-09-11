@@ -76,10 +76,10 @@ class OrdersController extends Controller
         $orders = $this->user()
                 ->orders()
                 ->orderBy('created_at', 'desc')
-                ->paginate();
+                ->get();
 
         // 在返回的 orders 中获取其关联的 item 和 product 时, 只需要在 transformer 中引入，Dingo Api 会自动帮处理掉 N+ 1 的问题
-    	return $this->response->paginator($orders, new OrderTransformer());
+    	return $this->response->collection($orders, new OrderTransformer());
     }
 
     public function show(Order $order, Request $request)

@@ -7,7 +7,7 @@ use League\Fractal\TransformerAbstract;
 
 class OrderTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['item'];
+    protected $availableIncludes = ['items'];
 
     public function transform(Order $order)
     {
@@ -23,8 +23,8 @@ class OrderTransformer extends TransformerAbstract
         ];
     }
 
-    public function includeItem(Order $Order)
+    public function includeItems(Order $order)
     {
-        return $this->collection($Order->items, new OrderItemTransformer());
+        return $this->collection($order->items, new OrderItemTransformer());
     }
 }
