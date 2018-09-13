@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Carbon\Carbon;
 use App\Transformers\OrderTransformer;
+use App\Events\OrderCreated;
 
 class OrdersController extends Controller
 {
@@ -67,6 +68,9 @@ class OrdersController extends Controller
 
             return $order;
         });
+
+        // 发送邮件
+        event(new OrderCreated($order));
     	
     	return $this->response->item($order, new OrderTransformer());
     }

@@ -12,6 +12,16 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
+    /**
+     * 邮件频道的路由
+     *
+     * @return string
+     */
+    // public function routeNotificationForMail()
+    // {
+    //     return '2546763702@qq.com';
+    // }
+
     // Rest omitted for brevity
     public function getJWTIdentifier()
     {
